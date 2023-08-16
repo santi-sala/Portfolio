@@ -79,4 +79,39 @@ function animateSlides() {
   });
 }
 
+let mouse = document.querySelector(".cursor");
+let mouseText = mouse.querySelector("span");
+
+/**********CURSOR ANIMATION *********/
+//Following cursor
+function cursor(e) {
+  mouse.style.top = e.pageY + "px";
+  mouse.style.left = e.pageX + "px";
+}
+
+//Animating text
+function activeCursor(e) {
+  const item = e.target;
+
+  if (item.id === "logo" || item.classList.contains("burger")) {
+    mouse.classList.add("nav-active");
+  } else {
+    mouse.classList.remove("nav-active");
+  }
+
+  if (item.classList.contains("explore-btn")) {
+    mouse.classList.add("explore-active");
+    gsap.to(".title-swipe", 1, { y: "0%" });
+    mouseText.innerText = "Tap";
+  } else {
+    mouse.classList.remove("explore-active");
+    gsap.to(".title-swipe", 1, { y: "100%" });
+
+    mouseText.innerText = "";
+  }
+}
+/**********CURSOR ANIMATION *********/
+
+window.addEventListener("mousemove", cursor);
+window.addEventListener("mouseover", activeCursor);
 animateSlides();
