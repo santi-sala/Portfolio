@@ -10,6 +10,10 @@ body {
   overflow-x: hidden;
 }
 
+body.hide {
+  overflow: hidden;
+}
+
 #logo {
   color: white;
   font-family: "Roboto";
@@ -26,6 +30,8 @@ body {
   width: 80%;
   margin: auto;
   padding: 2rem 0rem;
+  z-index: 2;
+  position: relative;
 }
 
 .line1,
