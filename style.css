@@ -8,18 +8,19 @@ body {
   background: #17181a;
   font-family: "Montserrat", sans-serif;
   overflow-x: hidden;
+  position: relative;
 }
 
 body.hide {
   overflow: hidden;
 }
 
+/********** HEADER & NAV **********/
 #logo {
   color: white;
   font-family: "Roboto";
 }
 
-/********** HEADER & NAV **********/
 .nav-header {
   min-height: 10vh;
   font-size: 1rem;
@@ -45,6 +46,11 @@ body.hide {
 
 .burger {
   cursor: pointer;
+}
+/********** HEADER & NAV **********/
+
+.main {
+  position: absolute;
 }
 
 /********** CONTENTS GLOBAL **********/
@@ -105,6 +111,7 @@ body.hide {
   align-self: flex-start;
   cursor: pointer;
 }
+/********** CONTENTS GLOBAL **********/
 
 /********** CONTENTS Animation **********/
 .reveal-img,
@@ -116,17 +123,7 @@ body.hide {
   left: 0;
   top: -15%;
 }
-
-/********** CONTENTS SPECIFIC **********/
-.lila-span {
-  color: rgb(167, 110, 231);
-}
-.orange-span {
-  color: rgb(255, 139, 93);
-}
-.blue-span {
-  color: rgb(86, 124, 228);
-}
+/********** CONTENTS Animation **********/
 
 /********** FOOTER **********/
 .footer-bar {
@@ -167,6 +164,7 @@ body.hide {
   font-size: 1.5rem;
   line-height: 2rem;
 }
+/********** FOOTER **********/
 
 /********** CURSOR ANIMATION **********/
 .cursor {
@@ -215,6 +213,18 @@ body.hide {
   mix-blend-mode: darken;
   transform: translateY(100%);
 }
+/********** CURSOR ANIMATION **********/
+
+/********** CONTENTS SPECIFIC **********/
+.lila-span {
+  color: rgb(167, 110, 231);
+}
+.orange-span {
+  color: rgb(255, 139, 93);
+}
+.blue-span {
+  color: rgb(86, 124, 228);
+}
 
 .t-swipe1 {
   background: rgb(167, 110, 231);
@@ -227,8 +237,101 @@ body.hide {
 .t-swipe3 {
   background: rgb(86, 124, 228);
 }
+/********** CONTENTS SPECIFIC **********/
 
 /********** SCROLL MAGIC **********/
 .scrollmagic-pin-spacer {
   position: static !important;
+}
+/********** SCROLL MAGIC **********/
+
+/********** OTHER PAGES **********/
+/********** SKI ME DOWN BEFORE YOU GO GO **********/
+.fashion1,
+.fashion2,
+.fashion3 {
+  min-height: 90vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 70%;
+  margin: auto;
+  margin-top: 5rem;
+  color: white;
+  flex-wrap: wrap;
+  position: relative;
+}
+
+.fashion1 h1 {
+  color: rgb(255, 139, 93);
+}
+
+.fashion2 h1 {
+  color: rgb(167, 110, 231);
+}
+
+.fashion3 h1 {
+  color: rgb(86, 124, 228);
+}
+
+.fashion-text {
+  flex: 1;
+  position: relative;
+  flex-basis: 25rem;
+}
+
+.fashion-text h1 {
+  font-size: 6rem;
+  padding: 5rem 0rem;
+}
+.fashion-text p {
+  font-size: 2rem;
+  padding: 2rem 2rem 0rem 0rem;
+  margin-bottom: 10rem;
+}
+
+.fashion-img {
+  height: 70vh;
+  flex-basis: 30rem;
+}
+
+.fashion-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.fashion-nr {
+  font-size: 15rem;
+  position: absolute;
+  left: 10%;
+  bottom: 5%;
+  color: white;
+  opacity: 0.2;
+}
+/********** SKI ME DOWN BEFORE YOU GO GO **********/
+/********** OTHER PAGES **********/
+
+.swipe {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  transform: translate(-100%);
+}
+
+.swipe1 {
+  background: rgb(167, 110, 231);
+  z-index: 5;
+}
+
+.swipe2 {
+  background: rgb(86, 124, 228);
+  z-index: 4;
+}
+
+.swipe3 {
+  background: rgb(255, 139, 93);
+  z-index: 3;
 }

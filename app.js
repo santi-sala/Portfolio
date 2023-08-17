@@ -131,7 +131,84 @@ function navToggle(e) {
     document.body.classList.remove("hide");
   }
 }
-/********** BBURGER ANIMATION *********/
+/********** BURGER ANIMATION *********/
+
+/********** BARBA TRANSITIONS *********/
+const logo = document.querySelector("#logo");
+barba.init({
+  views: [
+    {
+      namespace: "home",
+      beforeEnter() {
+        animateSlides();
+        logo.href = "./index.html";
+      },
+      beforeLeave() {
+        slideScene.destroy();
+        pageScene.destroy();
+        controller.destroy();
+      },
+    },
+    {
+      namespace: "fashion",
+      beforeEnter() {
+        logo.href = "../../index.html";
+        gsap.fromTo(
+          ".nav-header",
+          1,
+          { y: "100%" },
+          { y: "0%", ease: "power2.inOut" }
+        );
+      },
+    },
+  ],
+  transitions: [
+    {
+      leave(data) {
+        const done = this.async();
+
+        const tl = gsap.timeline({ defaults: { ease: "power2.inOut" } });
+        tl.fromTo(
+          data.current.contaner,
+          1,
+          { opacity: 1 },
+          {
+            opacity: 0,
+          }
+        );
+        tl.fromTo(
+          ".swipe",
+          0.6,
+          { x: "-100%" },
+          { x: "0%", onComplete: done },
+          "-=0.5"
+        );
+      },
+      enter(data) {
+        const done = this.async();
+        // Scroll to the top
+        window.scrollTo(0, 0);
+        const tl = gsap.timeline({ defaults: { ease: "power2.inOut" } });
+        tl.fromTo(
+          ".swipe",
+          0.75,
+          { x: "0%" },
+
+          { x: "100%", stagger: 0.2, onComplete: done }
+        );
+        tl.fromTo(
+          data.next.container,
+          0.5,
+          { opacity: 0 },
+          {
+            opacity: 1,
+          }
+        );
+      },
+    },
+  ],
+});
+/********** BARBA TRANSITIONS *********/
 
 /********** EVENT LISTENERS **********/
 burger.addEventListener("click", navToggle);
@@ -139,5 +216,3 @@ window.addEventListener("mousemove", cursor);
 window.addEventListener("mouseover", activeCursor);
 
 /********** EVENT LISTENERS **********/
-
-animateSlides();
