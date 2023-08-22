@@ -1,6 +1,7 @@
 let controller;
 let slideScene;
 let pageScene;
+let detailScene;
 
 function animateSlides() {
   //Init controller
@@ -28,7 +29,7 @@ function animateSlides() {
     slideTimeline.fromTo(revealImg, { x: "0%" }, { x: "100%" });
     slideTimeline.fromTo(img, { scale: 2 }, { scale: 1 }, "-=0.2");
     slideTimeline.fromTo(revealText, { x: "0%" }, { x: "100%" }, "-=0.5");
-    slideTimeline.fromTo(nav, { y: "-100%" }, { y: "0%" }, "-=0.5");
+    //slideTimeline.fromTo(nav, { y: "-100%" }, { y: "0%" }, "-=0.5");
     /********** GSAP *********/
 
     /********** SROLL MAGIC *********/
@@ -133,6 +134,37 @@ function navToggle(e) {
 }
 /********** BURGER ANIMATION *********/
 
+/********** Second Page Transitions **********/
+function detailAnimation() {
+  controller = new ScrollMagic.Controller();
+  const slides = document.querySelectorAll(".detail-slide");
+  slides.forEach((slide, index, slides) => {
+    const slideTimeline = gsap.timeline({ defaults: { duration: 1 } });
+    let nextSlide = slides.length - 1 === index ? "end" : slides[index + 1];
+    const nextImage = nextSlide.querySelector("img");
+    slideTimeline.fromTo(slide, { opacity: 1 }, { opacity: 0 });
+    slideTimeline.fromTo(nextSlide, { opacity: 0 }, { opacity: 1 }, "-=0.5");
+    slideTimeline.fromTo(nextImage, { x: "50%" }, { x: "0%" });
+
+    //Scene
+    detailScene = new ScrollMagic.Scene({
+      triggerElement: slide,
+      duration: "100%",
+      triggerHook: 0,
+    })
+      .setPin(slide, { pushFollowers: false })
+      .setTween(slideTimeline)
+      .addIndicators({
+        colorStart: "white",
+        colorTrigger: "red",
+        name: "detailScene",
+        indent: 200,
+      })
+      .addTo(controller);
+  });
+}
+/********** Second Page Transitions **********/
+
 /********** BARBA TRANSITIONS *********/
 const logo = document.querySelector("#logo");
 barba.init({
@@ -153,12 +185,11 @@ barba.init({
       namespace: "fashion",
       beforeEnter() {
         logo.href = "../../index.html";
-        gsap.fromTo(
-          ".nav-header",
-          1,
-          { y: "100%" },
-          { y: "0%", ease: "power2.inOut" }
-        );
+        detailAnimation();
+      },
+      beforeLeave() {
+        controller.destroy();
+        detailScene.destroy();
       },
     },
   ],
@@ -193,7 +224,6 @@ barba.init({
           ".swipe",
           0.75,
           { x: "0%" },
-
           { x: "100%", stagger: 0.2, onComplete: done }
         );
         tl.fromTo(
@@ -203,6 +233,13 @@ barba.init({
           {
             opacity: 1,
           }
+        );
+        tl.fromTo(
+          ".nav-header",
+          1,
+          { y: "-100%" },
+          { y: "0%", ease: "power2.inOut" },
+          "-=1.5"
         );
       },
     },
