@@ -40,11 +40,11 @@ function animateSlides() {
       reverse: false,
     })
       .setTween(slideTimeline)
-      .addIndicators({
+      /*.addIndicators({
         colorStart: "white",
         colorTrigger: "red",
         name: "slide",
-      })
+      })*/
       .addTo(controller);
     /********** SROLL MAGIC *********/
 
@@ -66,12 +66,12 @@ function animateSlides() {
       duration: "100%",
       triggerHook: 0,
     })
-      .addIndicators({
+      /*.addIndicators({
         colorStart: "white",
         colorTrigger: "red",
         name: "page",
         indent: 200,
-      })
+      })*/
       .setPin(slide, { pushFollowers: false })
       .setTween(pageTimeline)
       .addTo(controller);
@@ -154,12 +154,12 @@ function detailAnimation() {
     })
       .setPin(slide, { pushFollowers: false })
       .setTween(slideTimeline)
-      .addIndicators({
+      /*.addIndicators({
         colorStart: "white",
         colorTrigger: "red",
         name: "detailScene",
         indent: 200,
-      })
+      })*/
       .addTo(controller);
   });
 }

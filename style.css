@@ -33,6 +33,7 @@ body.hide {
   padding: 2rem 0rem;
   z-index: 2;
   position: relative;
+  position: sticky;
 }
 
 .line1,
@@ -345,6 +346,10 @@ body.hide {
   .fashion-text h1 {
     font-size: 2rem;
     padding: 1rem 0rem;
+  }
+  .fashion-text p {
+    font-size: 1.2rem;
+    object-position: top;
   }
 }
 
